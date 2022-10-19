@@ -36,11 +36,6 @@
   <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
     <TargetFrameworks>netstandard2.0;net5.0;net6.0</TargetFrameworks>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="minver" Version="3.0.0-alpha.1" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-  </ItemGroup>
 
   <!--Conditional Package references -->
   <ItemGroup Condition="'$(TargetFramework)' != 'net5.0' and '$(TargetFramework)' != 'net6.0'">
@@ -50,10 +45,4 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'net472'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
-
-  <Target Name="SetAssemblyVersion" AfterTargets="MinVer">
-    <PropertyGroup>
-      <AssemblyVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch).0</AssemblyVersion>
-    </PropertyGroup>
-  </Target>
 </Project>
